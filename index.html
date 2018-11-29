@@ -2,18 +2,43 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>SysInfo</title>
     <!-- Compiled and minified Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
       <div class="container">
-          <h1>Hello World!</h1>
+          <h4 class="center white-text">System Information</h4>
+          <div id="output"></div>
       </div>
   </body>
   <script>
-      console.log(process);
+      let output = `
+        <ul class="collection with-header grey darken-4">
+            <li class="collection-header grey-text text-darken-4"><h6>System Specs</h6></li>
+            <li class="collection-item">System Architecture:  ${navigator.platform}</li>
+            <li class="collection-item">System Architecture:  ${process.arch}</li>
+        </ul>
+        <ul class="collection with-header grey darken-4">
+            <li class="collection-header grey-text text-darken-4"><h6>System Memory</h6></li>
+            <li class="collection-item">Total:  ${process.getSystemMemoryInfo().total}</li>
+            <li class="collection-item">Free:  ${process.getSystemMemoryInfo().free}</li>
+            <li class="collection-item">Swap Total:  ${process.getSystemMemoryInfo().swapTotal}</li>
+        </ul>
+        <ul class="collection with-header grey darken-4">
+            <li class="collection-header grey-text text-darken-4"><h6>Computer Info</h6></li>
+            <li class="collection-item">Username:  ${process.env.USER}</li>
+            <li class="collection-item">User Home Path:  ${process.env.HOME}</li>
+        </ul>
+        <ul class="collection with-header grey darken-4">
+            <li class="collection-header grey-text text-darken-4"><h6>App Version Details</h6></li>
+            <li class="collection-item">Node:  ${process.versions.node}</li>
+            <li class="collection-item">Chrome:  ${process.versions.chrome}</li>
+            <li class="collection-item">Electron:  ${process.versions.electron}</li>
+        </ul>
+      `;
+      document.getElementById('output').innerHTML = output;
   </script>
   <script>
     // You can also require other files to run in this process

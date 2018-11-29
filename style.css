@@ -1,3 +1,15 @@
+html{
+    color: rgba(256, 256, 256, 0.8);
+}
+
 body{
-    background-color: #01579b;
+    background-color: #212121;
+}
+
+.collection .collection-item{
+    background-color: #212121;
+}
+
+.collection{
+    margin: 4% 0;
 }
